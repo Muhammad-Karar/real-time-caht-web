@@ -11,7 +11,7 @@ export const connectSocket = (username: string) => {
   }
 
   // FIX 2: Create a fresh connection
-  socket = io('http://192.168.10.5:4000', {
+  socket = io(process.env.NEXT_LOCAL_API_URL || 'http://localhost:4000', {
     auth: { username },
     query: { username },
     reconnectionAttempts: 5,
