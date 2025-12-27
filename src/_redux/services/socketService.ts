@@ -11,11 +11,12 @@ export const connectSocket = (username: string) => {
   }
 
   // FIX 2: Create a fresh connection
-  socket = io(process.env.NEXT_LOCAL_API_URL || 'http://localhost:4000', {
+  socket = io(process.env.NEXT_PUBLIC_SOCKET_URL!, {
     auth: { username },
     query: { username },
     reconnectionAttempts: 5,
     transports: ['websocket'], // FIX 3: Force WebSocket to avoid polling delays
+    withCredentials: true,
   });
 
   return socket;

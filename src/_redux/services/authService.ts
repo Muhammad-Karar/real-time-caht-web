@@ -1,6 +1,7 @@
 import api from '../api';
 
 export const loginAPI = async (username: string) => {
+  console.log('API URL:', process.env.NEXT_LOCAL_API_URL, api);
   const response = await api.post('/login', { username });
   return response.data;
 };
